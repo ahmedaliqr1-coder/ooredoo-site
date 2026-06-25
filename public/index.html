@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ooredoo Kuwait - خدمات الاتصالات والإنترنت</title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>Ooredoo</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active" data-page="home">الرئيسية</a></li>
+                    <li><a href="#manage" class="nav-link" data-page="manage">إدارة الحساب</a></li>
+                    <li><a href="#pay" class="nav-link" data-page="pay">الدفع</a></li>
+                    <li><a href="#shop" class="nav-link" data-page="shop">المتجر</a></li>
+                    <li><a href="#more" class="nav-link" data-page="more">المزيد</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Pages Container -->
+        <div class="pages-container">
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                <div class="container">
+                    <div class="hero">
+                        <h2>مرحباً بك في Ooredoo</h2>
+                        <p>خدمات الاتصالات والإنترنت الموثوقة</p>
+                        <button class="btn btn-primary" onclick="navigateTo('pay')">ابدأ الآن</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manage Page -->
+            <div id="manage" class="page">
+                <div class="container">
+                    <h2>إدارة الحساب</h2>
+                    <div class="card">
+                        <h3>معلومات الحساب</h3>
+                        <p>رقم الهاتف: <strong id="accountPhone">-</strong></p>
+                        <p>الرصيد: <strong id="accountBalance">0 د.ك</strong></p>
+                        <p>الحالة: <strong id="accountStatus">نشط</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pay Page -->
+            <div id="pay" class="page">
+                <div class="container">
+                    <h2>الدفع</h2>
+                    <div class="payment-form-container">
+                        <form id="paymentForm" class="payment-form">
+                            <div class="form-group">
+                                <label for="phone">رقم الهاتف</label>
+                                <input type="tel" id="phone" name="phone" placeholder="965XXXXXXXX" required />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="amount">المبلغ (د.ك)</label>
+                                <input type="number" id="amount" name="amount" placeholder="أدخل المبلغ" min="1" required />
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="paymentMethod">طريقة الدفع</label>
+                                <select id="paymentMethod" name="paymentMethod" required>
+                                    <option value="">اختر طريقة الدفع</option>
+                                    <option value="knet">KNET</option>
+                                    <option value="visa">VISA</option>
+                                    <option value="mastercard">MASTERCARD</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">الوصف</label>
+                                <input type="text" id="description" name="description" placeholder="وصف الخدمة" required />
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">إرسال الطلب</button>
+                        </form>
+                        
+                        <div id="paymentStatus" class="status-message"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shop Page -->
+            <div id="shop" class="page">
+                <div class="container">
+                    <h2>المتجر</h2>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <h3>باقة إنترنت 50GB</h3>
+                            <p class="price">15 د.ك</p>
+                            <button class="btn btn-secondary" onclick="selectProduct('Internet 50GB', 15)">اختر</button>
+                        </div>
+                        <div class="product-card">
+                            <h3>باقة إنترنت 100GB</h3>
+                            <p class="price">25 د.ك</p>
+                            <button class="btn btn-secondary" onclick="selectProduct('Internet 100GB', 25)">اختر</button>
+                        </div>
+                        <div class="product-card">
+                            <h3>شحن 5 د.ك</h3>
+                            <p class="price">5 د.ك</p>
+                            <button class="btn btn-secondary" onclick="selectProduct('Recharge 5KD', 5)">اختر</button>
+                        </div>
+                        <div class="product-card">
+                            <h3>شحن 10 د.ك</h3>
+                            <p class="price">10 د.ك</p>
+                            <button class="btn btn-secondary" onclick="selectProduct('Recharge 10KD', 10)">اختر</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Page -->
+            <div id="more" class="page">
+                <div class="container">
+                    <h2>المزيد</h2>
+                    <div class="info-section">
+                        <h3>عن Ooredoo</h3>
+                        <p>Ooredoo هي شركة رائدة في مجال الاتصالات والإنترنت في الكويت، تقدم خدمات عالية الجودة.</p>
+                    </div>
+                    <div class="info-section">
+                        <h3>تواصل معنا</h3>
+                        <p>البريد الإلكتروني: support@ooredoo.com.kw</p>
+                        <p>الهاتف: 1800 1800</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OTP Modal -->
+        <div id="otpModal" class="modal">
+            <div class="modal-content">
+                <h2>التحقق من الهوية</h2>
+                <p>أدخل رمز التحقق المرسل إلى هاتفك</p>
+                <input type="text" id="otpInput" placeholder="أدخل الرمز" maxlength="6" />
+                <div class="modal-buttons">
+                    <button class="btn btn-primary" onclick="verifyOTP()">تحقق</button>
+                    <button class="btn btn-secondary" onclick="closeOTPModal()">إلغاء</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

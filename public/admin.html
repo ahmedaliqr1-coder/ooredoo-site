@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ooredoo Admin - لوحة التحكم</title>
+    <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="header-content">
+                <h1>لوحة تحكم Ooredoo</h1>
+                <div class="header-info">
+                    <span id="currentTime"></span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="admin-main">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar">
+                <nav class="admin-nav">
+                    <ul>
+                        <li><a href="#" class="nav-item active" data-section="dashboard">لوحة المعلومات</a></li>
+                        <li><a href="#" class="nav-item" data-section="payments">طلبات الدفع</a></li>
+                        <li><a href="#" class="nav-item" data-section="reports">التقارير</a></li>
+                        <li><a href="#" class="nav-item" data-section="settings">الإعدادات</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Content Area -->
+            <main class="admin-content">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="section active">
+                    <h2>لوحة المعلومات</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>إجمالي الطلبات</h3>
+                            <p class="stat-value" id="totalPayments">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>الطلبات المعلقة</h3>
+                            <p class="stat-value" id="pendingPayments">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>الطلبات الموافق عليها</h3>
+                            <p class="stat-value" id="approvedPayments">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>الطلبات المرفوضة</h3>
+                            <p class="stat-value" id="rejectedPayments">0</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Payments Section -->
+                <section id="payments" class="section">
+                    <h2>طلبات الدفع</h2>
+                    <div class="payments-container">
+                        <table class="payments-table">
+                            <thead>
+                                <tr>
+                                    <th>رقم الطلب</th>
+                                    <th>رقم الهاتف</th>
+                                    <th>المبلغ</th>
+                                    <th>طريقة الدفع</th>
+                                    <th>الوصف</th>
+                                    <th>الحالة</th>
+                                    <th>التاريخ</th>
+                                    <th>الإجراءات</th>
+                                </tr>
+                            </thead>
+                            <tbody id="paymentsTableBody">
+                                <tr>
+                                    <td colspan="8" style="text-align: center; padding: 2rem;">جاري تحميل البيانات...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Reports Section -->
+                <section id="reports" class="section">
+                    <h2>التقارير</h2>
+                    <div class="reports-container">
+                        <div class="report-card">
+                            <h3>إجمالي المبالغ المدفوعة</h3>
+                            <p class="report-value" id="totalAmount">0 د.ك</p>
+                        </div>
+                        <div class="report-card">
+                            <h3>متوسط قيمة الطلب</h3>
+                            <p class="report-value" id="averageAmount">0 د.ك</p>
+                        </div>
+                        <div class="report-card">
+                            <h3>نسبة النجاح</h3>
+                            <p class="report-value" id="successRate">0%</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settings" class="section">
+                    <h2>الإعدادات</h2>
+                    <div class="settings-container">
+                        <div class="setting-item">
+                            <label>تحديث البيانات تلقائياً</label>
+                            <input type="checkbox" id="autoRefresh" checked />
+                        </div>
+                        <div class="setting-item">
+                            <button class="btn btn-secondary" onclick="refreshData()">تحديث البيانات الآن</button>
+                        </div>
+                        <div class="setting-item">
+                            <button class="btn btn-secondary" onclick="exportData()">تصدير البيانات</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Action Modal -->
+    <div id="actionModal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">تأكيد الإجراء</h2>
+            <p id="modalMessage"></p>
+            <div class="modal-buttons">
+                <button class="btn btn-primary" id="confirmBtn" onclick="confirmAction()">تأكيد</button>
+                <button class="btn btn-secondary" onclick="closeModal()">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>
